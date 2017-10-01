@@ -1,0 +1,121 @@
+@import "inc";
+
+p {
+
+	@extend .main-text;
+	display: inline;
+}
+
+h2 {
+
+	@extend .main-text;
+	font-size: 25px;
+	letter-spacing: 2px;
+	padding: 20px;
+	font-weight: 100;
+}
+
+h3 {
+	&.error {
+
+		@extend .main-text;
+		position: relative;
+		left: 40vw;
+		top: 7vh;
+		padding: 3px;
+		color: $error-color;
+		font-size: 12px;
+		letter-spacing: 2px;
+		display: block;
+		width: 300px;
+	}
+
+}
+
+form {
+
+	position: fixed;
+	top: 40vh;
+	left: 40vw;
+
+	&#createacc {
+
+		top: 30vh;
+		left: 40vw;
+	}
+
+	input {
+
+		border-radius: 0;
+		background-color: white;
+		margin: 15px 0;
+
+		&[type=text], &[type=password] {
+
+				border: none;
+		    border-bottom: 2px solid $primary-color;
+		    padding: 5px;
+		    @include transition(0.4s);
+
+		    &:focus {
+
+		    	outline: none;
+					border-bottom: 2px solid $hover-color;
+		    }
+		}
+
+
+		&[type=submit] {
+
+			@extend .main-text;
+			font-weight: bold;
+			border: none;
+		  background: none;
+			margin: 20px 0;
+		  @include transition(0.4s);
+
+		    &:focus {
+
+		    	outline: none;
+		    }
+
+		    &:hover {
+
+		    	cursor: pointer;
+				color: $hover-color;
+		    }
+		}
+	}
+
+	select {
+
+		margin: 15px 0;
+
+	}
+}
+
+@keyframes error{
+
+    0% {border-bottom: 2px solid $primary-color;}
+    50% {border-bottom: 2px solid $error-color;}
+    100% {border-bottom: 2px solid $primary-color;}
+
+}
+
+@-webkit-keyframes error {
+    0% {border-bottom: 2px solid $primary-color;}
+    50% {border-bottom: 2px solid $error-color;}
+    100% {border-bottom: 2px solid $primary-color;}
+}
+
+@-moz-keyframes error {
+    0% {border-bottom: 2px solid $primary-color;}
+    50% {border-bottom: 2px solid $error-color;}
+    100% {border-bottom: 2px solid $primary-color;}
+}
+
+@-o-keyframes error {
+    0% {border-bottom: 2px solid $primary-color;}
+    50% {border-bottom: 2px solid $error-color;}
+    100% {border-bottom: 2px solid $primary-color;}
+}
