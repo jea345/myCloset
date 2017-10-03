@@ -1,5 +1,8 @@
 .DS_Store
 
+.sass-cache
+.sass-cache/*
+
 application/cache/*
 !application/cache/index.html
 
