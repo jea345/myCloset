@@ -73,12 +73,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+$dbopts = parse_url(getenv('DATABASE_URL'));
+
 $db['default'] = array(
-	'dsn'	=> 'pgsql:host=ec2-23-23-248-247.compute-1.amazonaws.com;port=5432;dbname=d5d2tnbs8d5cgq',
-	'hostname' => 'ec2-23-23-248-247.compute-1.amazonaws.com',
-	'username' => 'zmdseunxthphls',
-	'password' => '390324b30a55d5407bb31efb43627c777bcdf3776ca6d1c3022ad8721d37b229',
-	'database' => 'd5d2tnbs8d5cgq',
+	'dsn'	=> 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"] . ';port=' . $dbopts["port"],
+	'username' => $dbopts["user"],
+	'password' => $dbopts["pass"],
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => TRUE,
