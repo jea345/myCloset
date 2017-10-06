@@ -1,5 +1,10 @@
 .DS_Store
 
+images
+images/*
+
+
+
 .sass-cache
 .sass-cache/*
 
