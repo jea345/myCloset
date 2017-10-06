@@ -23,12 +23,14 @@ class Clothes_model extends CI_Model {
         array_push($clothing_arr[ $clothing->category ], array('id' => $clothing->id, 'name' => $clothing->name, 'picture_id' => $clothing->picture_id));
 
         sort( $clothing_arr[ $clothing->category ] );
+        uksort( $clothing_arr, '$this->_cat_cmp' );
       }
       else
       {
         $clothing_arr[ $clothing->category ] = array( array('id' => $clothing->id, 'name' => $clothing->name, 'picture_id' => $clothing->picture_id) );
 
         sort( $clothing_arr[ $clothing->category ] );
+        uksort( $clothing_arr, '$this->_cat_cmp' );
       }
     }
 
@@ -88,6 +90,23 @@ class Clothes_model extends CI_Model {
     $this->db->where( array('id' => $id, 'user_id' => $this->session->user_id) );
     $this->db->update('clothes', $data);
 
+  }
+
+  private function _cat_cmp($a, $b)
+  {
+    if ( $a == $b ) { return 0; }
+
+    $order = array("outerwear", "tops", "bottoms", "footwear", "underwear", "accessories", "other");
+
+    $position = array_search( $a, $order );
+    $position2 = array_search( $b, $order );
+
+    if ( $position2 !== false && $position !== false ) { return ( $position < $position2 ) ? -1 : 1; }
+
+    if( $position !== false ) { return -1; }
+    if( $position2 !== false ) { return 1; }
+
+    return ( $a < $b ) ? -1 : 1;
   }
 
 }
