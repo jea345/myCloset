@@ -42,7 +42,15 @@ class Clothes_model extends CI_Model {
     $query = $this->db->get_where( 'clothes', array('id' => $id, 'user_id' => $this->session->user_id) );
 
     return $query->result()[0];
+  }
 
+  public function valid_id($id)
+  {
+    if( empty( $this->get_where_id($id) ) )
+    {
+      redirect('main');
+      die();
+    }
   }
 
   public function insert($name, $category, $picture_id = NULL)

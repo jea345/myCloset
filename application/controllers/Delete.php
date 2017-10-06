@@ -6,6 +6,7 @@ class Delete extends MY_Controller {
   public function clothing($id)
   {
     $this->load->model('Clothes_model');
+    $this->Clothes_model->valid_id($id);
 
     unlink(FCPATH . 'images/' . $this->Clothes_model->get_where_id($id)[0]->picture_id );
 
@@ -18,6 +19,7 @@ class Delete extends MY_Controller {
   public function clothing_image($id)
   {
     $this->load->model('Clothes_model');
+    $this->Clothes_model->valid_id($id);
 
     unlink(FCPATH . 'images/' . $this->Clothes_model->get_where_id($id)[0]->picture_id );
 
