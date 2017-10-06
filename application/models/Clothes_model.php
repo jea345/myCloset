@@ -23,14 +23,14 @@ class Clothes_model extends CI_Model {
         array_push($clothing_arr[ $clothing->category ], array('id' => $clothing->id, 'name' => $clothing->name, 'picture_id' => $clothing->picture_id));
 
         sort( $clothing_arr[ $clothing->category ] );
-        uksort( $clothing_arr, '_cat_cmp' );
+        uksort( $clothing_arr, 'this->_cat_cmp' );
       }
       else
       {
         $clothing_arr[ $clothing->category ] = array( array('id' => $clothing->id, 'name' => $clothing->name, 'picture_id' => $clothing->picture_id) );
 
         sort( $clothing_arr[ $clothing->category ] );
-        uksort( $clothing_arr, '_cat_cmp' );
+        uksort( $clothing_arr, 'this->_cat_cmp' );
       }
     }
 
