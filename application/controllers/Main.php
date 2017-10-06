@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class Main extends MY_Controller {
 
-  public $clothing_arr = array();
   public $data;
 
   public function __construct()
@@ -17,19 +16,7 @@ Class Main extends MY_Controller {
     $this->data['title'] = "My Clothes";
     $this->data['bottom'] = array('title' => 'Logout', 'uri' => 'logout');
 
-    foreach( $this->Clothes_model->get_by_type() as $clothing )
-    {
-      if( isset($this->clothing_arr[ $clothing->category ]) )
-      {
-        array_push($this->clothing_arr[ $clothing->category ], array('id' => $clothing->id, 'name' => $clothing->name, 'picture_id' => $clothing->picture_id));
-      }
-      else
-      {
-        $this->clothing_arr[ $clothing->category ] = array( array('id' => $clothing->id, 'name' => $clothing->name, 'picture_id' => $clothing->picture_id) );
-      }
-
-    }
-
+    $this->clothing_arr = $this->Clothes_model->get_by_type();
 
     $this->data['clothing_arr'] = $this->clothing_arr;
   }
@@ -40,6 +27,7 @@ Class Main extends MY_Controller {
 
 		$this->load->view('templates/head', $this->data);
     $this->load->view('main/nav', $this->data);
+    $this->load->view('main/default', $this->data);
     $this->load->view('templates/foot', $this->data);
   }
 

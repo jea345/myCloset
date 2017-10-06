@@ -1,7 +1,7 @@
 <div class="extras">
 
-  <?= anchor('edit', 'Edit Item', 'class="extras"') ?>
-  <?= anchor('delete', 'Delete Item', 'class="extras"') ?>
+  <?= anchor('edit/clothing/' . $selected, 'Edit Item', 'class="extras"') ?>
+  <?= anchor('delete/clothing/' . $selected, 'Delete Item', 'class="extras"') ?>
 
 </div>
 

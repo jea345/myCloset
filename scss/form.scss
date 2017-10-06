@@ -85,6 +85,11 @@ form {
 				color: $hover-color;
 		    }
 		}
+
+		&[type=file] {
+
+			width: 200px;
+		}
 	}
 
 	select {

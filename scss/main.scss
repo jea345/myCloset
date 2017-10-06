@@ -73,23 +73,18 @@ div {
 
 a{
 
+    @extend .main-text;
     text-decoration: none;
     outline: 0;
     border: 0;
+    @include transition(0.4s);
 
     &.extras {
 
-    	@extend .main-text;
       display: block;
 	    margin: 30px 10px;
-	    text-decoration: none;
 	    width: 150px;
-	    @include transition(0.4s);
 
-	    &:hover {
-
-	    	color: $hover-color;
-	    }
     }
 
     &.bottom {
@@ -101,11 +96,11 @@ a{
 	    top: 94vh;
 	    font-weight: bold;
 	    width: initial;
+    }
 
-	    &:hover {
+    &:hover {
 
-	    	color: $hover-color;
-	    }
+      color: $hover-color;
     }
 }
 

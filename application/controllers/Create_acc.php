@@ -35,7 +35,7 @@ class Create_acc extends MY_Controller {
 	{
 		if( empty( $this->input->post('submit') ) )
 		{
-			redirect('craete_acc');
+			redirect('create_acc');
 			die();
 		}
 		else
@@ -60,7 +60,25 @@ class Create_acc extends MY_Controller {
 			}
 			else
 			{
-        echo "success";
+        $firstname = $this->input->post('firstname');
+			  $lastname = $this->input->post('lastname');
+				$username = $this->input->post('username');
+				$password = password_hash( $this->input->post('password'), PASSWORD_BCRYPT );
+
+				if( empty( $email = $this->input->post('email') ) )
+				{
+					$this->Users_model->add($firstname, $lastname, $username, $password, $email);
+				}
+				else
+				{
+					$this->Users_model->add($firstname, $lastname, $username, $password);
+				}
+
+				redirect('login');
+				die();
+
+
+
 			}
 		}
 	}
