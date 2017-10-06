@@ -72,7 +72,7 @@ class Clothes_model extends CI_Model {
 
   public function delete($id)
   {
-    $this->db->delete( 'clothes', array('id' => $id) );
+    $this->db->delete( 'clothes', array('id' => $id, 'user_id' => $this->session->user_id) );
   }
 
   public function delete_image($id)
