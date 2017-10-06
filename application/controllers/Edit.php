@@ -40,9 +40,8 @@ class Edit extends MY_Controller {
 
   		if($this->form_validation->run() == FALSE)
   		{
-        if( $item = $this->Clothes_model->get_where_id($id) !== FALSE)
+        if( $item = $this->Clothes_model->get_where_id($id) )
         {
-          var_dump($item);
           $this->data['item_name'] = $item->name;
           $this->data['item_category'] = $item->category;
           $this->data['item_id'] = $item->id;
