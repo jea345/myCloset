@@ -40,19 +40,25 @@ class Edit extends MY_Controller {
 
   		if($this->form_validation->run() == FALSE)
   		{
-        $item = $this->Clothes_model->get_where_id($id)[0];
-
-        $this->data['item_name'] = $item->name;
-        $this->data['item_category'] = $item->category;
-        $this->data['item_id'] = $item->id;
-
-
-        if( !empty( $item->picture_id ) )
+        if( $item = $this->Clothes_model->get_where_id($id) !== FALSE)
         {
-          $this->data['item_picture'] = TRUE;
-        }
+          $this->data['item_name'] = $item->name;
+          $this->data['item_category'] = $item->category;
+          $this->data['item_id'] = $item->id;
 
-  			$this->load->view('main/edit_clothing', $this->data);
+
+          if( !empty( $item->picture_id ) )
+          {
+            $this->data['item_picture'] = TRUE;
+          }
+
+          $this->load->view('main/edit_clothing', $this->data);
+        }
+        else
+        {
+          redirect('main');
+          die();
+        }
   		}
       elseif ( $_FILES && $_FILES['image']['name'] )
       {
@@ -78,13 +84,10 @@ class Edit extends MY_Controller {
           $this->Clothes_model->edit($id, $name, $category, $picture_id);
           redirect('main');
           die();
-
         }
-
       }
       else
       {
-
         $this->Clothes_model->edit($id, $name, $category);
         redirect('main');
         die();
