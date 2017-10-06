@@ -81,7 +81,7 @@ $db['default'] = array(
 	'database' => 'd5d2tnbs8d5cgq',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
-	'pconnect' => FALSE,
+	'pconnect' => TRUE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
 	'cachedir' => '',

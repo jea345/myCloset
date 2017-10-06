@@ -6,13 +6,12 @@ class Logout extends MY_Controller {
   public function __construct()
   {
     parent::__construct();
+    $this->require_login();
   }
 
   public function index()
   {
-    $this->require_login();
-    
-    session_destroy();
+    $this->session->sess_destroy();
 
     redirect('login');
     die();

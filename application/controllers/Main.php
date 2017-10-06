@@ -18,7 +18,9 @@ Class Main extends MY_Controller {
 
     $this->clothing_arr = $this->Clothes_model->get_by_type();
 
+
     $this->data['clothing_arr'] = $this->clothing_arr;
+
   }
 
   public function index()
