@@ -41,7 +41,7 @@ class Clothes_model extends CI_Model {
   {
     $query = $this->db->get_where( 'clothes', array('id' => $id, 'user_id' => $this->session->user_id) );
 
-    return ( !empty( $query->result() ) ) ? $query->result() : FALSE;
+    return ( !empty( $query->result() ) ) ? $query->result()[0] : FALSE;
 
   }
 

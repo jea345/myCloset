@@ -42,6 +42,7 @@ class Edit extends MY_Controller {
   		{
         if( $item = $this->Clothes_model->get_where_id($id) !== FALSE)
         {
+          var_dump($item);
           $this->data['item_name'] = $item->name;
           $this->data['item_category'] = $item->category;
           $this->data['item_id'] = $item->id;
